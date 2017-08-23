@@ -8,14 +8,14 @@
   <title>JS Bin</title>
   <script>
     angular.module('SpektralApp', [])
-      .controller('TapListCtrl', function($scope, $http, $log){
+      .controller('TapListCtrl', function($http, $log, $scope){
           var self = this;
           $http({method: 'GET', url: '/taplist.json'}).then(
             function(response) {
               self.taps = response.data.taps;
-              $log('success', response);
+              $log.info('success', response);
             }, function(response){
-              $log('fail', response);
+              $log.error('fail', response);
             });
         });    
   </script>
@@ -23,10 +23,9 @@
 <body ng-app="SpektralApp">
   <div ng-controller="TapListCtrl as tapList">
     <h1>Taps</h1>
-    {{tapList.taps}}
     <ul ng-repeat="tap in tapList.taps">
       <li>
-        {{tap.brewery}} {{tap.name}} ({{tap.abv}} %)
+        {{tap.brewery}} {{tap.name}} ({{tap.abv}}% <span ng-if="tap.ibu">{{tap.ibu}} IBUs</span>)
       </li>
     </ul>
   </div>
