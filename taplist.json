@@ -1,11 +1,11 @@
 {
-  'taps':[
+  "taps":[
     {
-      'brewery': 'Turning Wheels',
-      'beer': 'Mountaing King IPA',
-      'style': 'IPA',
-      'abv': 7.0
-      'ibu': 65
+      "brewery": "Turning Wheels",
+      "beer": "Mountaing King IPA",
+      "styl"': "IPA",
+      "abv": 7.0,
+      "ibu": 65
     }
   ]
 }
