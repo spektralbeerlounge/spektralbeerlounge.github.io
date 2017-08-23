@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <title>JS Bin</title>
+  <script>
+    angular.module('SpektralApp', [])
+      .controller('TapListCtrl', function($scope, $http, $log){
+          var self = this;
+          $http({method: 'GET', url: 'http://spektral.beer/taplist.json'}).then(
+            function(response) {
+              self.taps = response.data.taps;
+              $log('success', response);
+            }, function(response){
+              $log('fail', response);
+            });
+        });    
+  </script>
+</head>
+<body ng-app="SpektralApp">
+  <div ng-controller="TapListCtrl as tapList">
+    <h1>Taps</h1>
+    {{tapList.taps}}
+    <ul ng-repeat="tap in tapList.taps">
+      <li>
+        {{tap.brewery}} {{tap.name}} ({{tap.abv}} %)
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
