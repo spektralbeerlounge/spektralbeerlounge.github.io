@@ -10,7 +10,7 @@
     angular.module('SpektralApp', [])
       .controller('TapListCtrl', function($scope, $http, $log){
           var self = this;
-          $http({method: 'GET', url: 'http://spektral.beer/taplist.json'}).then(
+          $http({method: 'GET', url: '/taplist.json'}).then(
             function(response) {
               self.taps = response.data.taps;
               $log('success', response);
