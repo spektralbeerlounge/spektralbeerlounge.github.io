@@ -7,29 +7,8 @@
   <meta http-equiv="refresh" content="0;URL='https://www.facebook.com/spektralbeerlounge/'" />
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <title>Spektral Beer Lounge Tap List</title>
-  <script>
-    angular.module('SpektralApp', [])
-      .controller('TapListCtrl', function($http, $log, $scope){
-          var self = this;
-          $http({method: 'GET', url: '/taplist.json'}).then(
-            function(response) {
-              self.taps = response.data.taps;
-              $log.info('success', response);
-            }, function(response){
-              $log.error('fail', response);
-            });
-        });    
-  </script>
+  <title>Spektral Beer Lounge</title>
 </head>
-<body ng-app="SpektralApp">
-  <div ng-controller="TapListCtrl as tapList">
-    <h1>Taps</h1>
-    <ul ng-repeat="tap in tapList.taps">
-      <li>
-        {{tap.brewery}} {{tap.name}} ({{tap.abv}}% ABV<span ng-if="tap.ibu">; {{tap.ibu}} IBUs</span>) <span ng-if="tap.price">P{{tap.price}}</span>
-      </li>
-    </ul>
-  </div>
+<body>
 </body>
 </html>
